@@ -29,6 +29,8 @@ Vue.use(vueHintCss)
 
 ## Usage
 
+Check codepen [example](https://codepen.io/VdustR/pen/RxPOyG).
+
 ### Basic
 
 ```html
