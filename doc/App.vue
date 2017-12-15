@@ -6,6 +6,9 @@
         .label Text
         input(v-model="text")
       label.field
+        input(type="checkbox" v-model="passText")
+        .checkbox-label passText
+      label.field
         .label Position
         select(v-model="direction")
           option(value="") default(top)
@@ -44,12 +47,12 @@
           option(value="") default
           option(value="no-animate") no-animate
           option(value="bounce") bounce
-    h2 result
+    h2 Result
     .result
-      button(v-hint-css="options") {{text}}
-    h2 Code
+      button(v-hint-css="value") {{text}}
+    h2 v-hint-css
     pre.code
-      code {{code}}
+      code {{JSON.stringify(this.value)}}
 </template>
 
 <script>
@@ -63,14 +66,12 @@ export default {
       size: '',
       always: false,
       rounded: false,
-      effect: ''
+      effect: '',
+      passText: false
     }
   },
 
   computed: {
-    code () {
-      return `<button(v-hint-css="${JSON.stringify(this.options)}") ${this.text}</button>`
-    },
     options () {
       let options = {
         text: this.text
@@ -94,6 +95,13 @@ export default {
         options.effect = this.effect
       }
       return options
+    },
+
+    value () {
+      if (this.passText) {
+        return this.text
+      }
+      return this.options
     }
   }
 }

@@ -125,6 +125,11 @@ hintCss.install = function (Vue, options) {
     if (!value) {
       throw new Error('value not set')
     }
+    if (typeof value === 'string') {
+      value = {
+        text: value
+      }
+    }
     vue.text = value.text || defaultText
     vue.direction = value.direction || defaultDirection
     vue.color = value.color || defaultColor

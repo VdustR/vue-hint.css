@@ -1,18 +1,63 @@
 # vue-hint.css
 
-> Vue directive for hint.css
+> Vue directive for [hint.css](https://kushagragour.in/lab/hint/)
 
-## Build Setup
+## Install
 
-``` bash
-# install dependencies
-npm install
+### npm
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+```text
+npm install -D vp-vue-hint.css
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+```javascript
+import Vue from 'vue'
+import vueHintCss from 'vp-vue-hint.css'
+Vue.use(vueHintCss)
+```
+
+### CDN
+
+```html
+<link rel="stylesheet" href="hint.min.css"></link>
+<script src="https://cdn.jsdelivr.net/npm/vue/"></script>
+<script src="https://unpkg.com/vp-vue-hint.css"></script>
+<script>
+  Vue.use(vueHintCss)
+</script>
+```
+
+## Usage
+
+### Basic
+
+```html
+<button v-hint-css="'hover me!!!'">
+```
+
+```html
+<template>
+  <button v-hint-css="options">
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        options: {
+          text: null,
+            //               (default)
+            // 'top-left'      'top'     'top-right'
+            // 'left'                        'right'
+            // 'bottom-left' 'bottom' 'bottom-right'
+          direction: null,
+          color: null, // 'error', 'info'(default),'warning', 'success'
+          size: null, // 'small', 'medium', 'large'
+          always: false,
+          rounded: false,
+          effect: null // 'no-animate', 'bounce'
+        }
+      }
+    }
+  }
+</script>
+```
