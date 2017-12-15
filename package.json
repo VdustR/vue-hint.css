@@ -1,9 +1,10 @@
 {
   "name": "vp-vue-hint.css",
   "description": "Vue directive for hint.css",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "author": "VdustR <VdustR@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/VdustR/vue-hint.css",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build-doc": "cross-env NODE_ENV=doc webpack --progress --hide-modules",
