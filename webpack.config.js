@@ -86,7 +86,7 @@ module.exports = {
   devtool: '#eval-source-map'
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (['doc', 'production'].includes(process.env.NODE_ENV)) {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
@@ -105,4 +105,13 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     })
   ])
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.entry = './src/index.js'
+  Object.assign(module.exports.output, {
+    filename: 'vue-hint.css.min.js',
+    libraryExport: 'default',
+    library: 'vueHintCss'
+  })
 }
