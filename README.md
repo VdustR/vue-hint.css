@@ -19,8 +19,8 @@ Vue.use(vueHintCss)
 ### CDN
 
 ```html
-<link rel="stylesheet" href="hint.min.css"></link>
-<script src="https://cdn.jsdelivr.net/npm/vue/"></script>
+<link rel="stylesheet" href="https://unpkg.com/hint.css"></link>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://unpkg.com/vp-vue-hint.css"></script>
 <script>
   Vue.use(vueHintCss)
@@ -34,6 +34,8 @@ Vue.use(vueHintCss)
 ```html
 <button v-hint-css="'hover me!!!'">
 ```
+
+### Advanced
 
 ```html
 <template>
@@ -60,4 +62,14 @@ Vue.use(vueHintCss)
     }
   }
 </script>
+```
+
+## Plugin options
+
+```javascript
+Vue.use(vueHintCss, {
+  directive: 'hint-css',
+  prefixClass: 'hint--',
+  attr: 'aria-label' // or 'data-hint'
+})
 ```
