@@ -61,7 +61,15 @@ hintCss.install = function (Vue, options) {
         },
         computed: {
           text () {
-            return this.value.text || defaultText
+            let str = String(this.value.text)
+            if (str === '') return str
+            if (!this.value.text) return defaultText
+            return str
+          },
+          hasText () {
+            if (this.text === '') return true
+            if (!this.text) return false
+            return true
           },
           directionFromModifier () {
             let effectiveDirections = directions.filter(direction => this.modifiers.includes(direction))
@@ -168,6 +176,9 @@ hintCss.install = function (Vue, options) {
           },
           classesObj () {
             let classes = {}
+            if (!this.hasText) {
+              return classes
+            }
             classes[this.direction] = true
             classes[this.color] = true
             if (this.size) {
@@ -186,22 +197,18 @@ hintCss.install = function (Vue, options) {
           },
           classesAry () {
             return Object.keys(this.classesObj).map(name => prefixClass.concat(name))
-          },
-          serializedClasses () {
-            return JSON.stringify(this.classesAry)
           }
         },
         methods: {
           applyClasses (beforeClasses, afterClasses) {
             let classesToRemove = beforeClasses.filter(a => !afterClasses.find(b => b === a))
-            let classesToAdd = afterClasses.filter(a => !beforeClasses.find(b => b === a))
             el.classList.remove(...classesToRemove)
-            el.classList.add(...classesToAdd)
+            el.classList.add(...afterClasses)
           }
         },
         watch: {
           text (val) {
-            if (val === null) {
+            if (!this.hasText) {
               el.removeAttribute(attr)
               return
             }

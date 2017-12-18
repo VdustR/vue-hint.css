@@ -3,6 +3,8 @@
     h2 Options
     .options
       label.field
+        input(type="checkbox" v-model="sentText")
+        .checkbox-label
         .label Text
         input(v-model="text")
       label.field
@@ -71,6 +73,7 @@ export default {
   name: 'app',
   data () {
     return {
+      sentText: true,
       text: 'hover me!!!',
       direction: '',
       color: '',
@@ -91,7 +94,7 @@ export default {
     },
     options () {
       let options = {
-        text: this.text
+        text: this.textPassed
       }
       if (this.direction) {
         options.direction = this.direction
@@ -113,10 +116,15 @@ export default {
       }
       return options
     },
-
+    textPassed () {
+      if (!this.sentText) {
+        return null
+      }
+      return this.text
+    },
     value () {
       if (this.passText) {
-        return this.text
+        return this.textPassed
       }
       return this.options
     }
