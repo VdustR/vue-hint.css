@@ -18,6 +18,22 @@
     "last 2 versions",
     "not ie <= 8"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:VdustR/vue-hint.css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VdustR/vue-hint.css/issues"
+  },
+  "keywords": [
+    "tooltip",
+    "ui",
+    "help",
+    "hint",
+    "vue",
+    "vue-plugin",
+    "vue-directive"
+  ],
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

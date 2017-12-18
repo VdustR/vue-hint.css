@@ -1,6 +1,10 @@
 # vue-hint.css
 
-> Vue directive for [hint.css](https://kushagragour.in/lab/hint/)
+> Vue directive for [hint.css](https://github.com/chinchang/hint.css)
+
+[![GitHub stars](https://img.shields.io/github/stars/VdustR/vue-hint.css.svg?style=flat-square)](https://github.com/VdustR/vue-hint.css/stargazers)
+[![GitHub license](https://img.shields.io/npm/dt/vp-vue-hint.css.svg?style=flat-square)](https://www.npmjs.com/package/vp-vue-hint.css)
+[![GitHub license](https://img.shields.io/github/license/VdustR/vue-hint.css.svg?style=flat-square)](https://github.com/VdustR/vue-hint.css/blob/master/LICENSE.md)
 
 ## Install
 
@@ -54,7 +58,7 @@ Check codepen [example](https://codepen.io/VdustR/pen/RxPOyG).
             // 'left'                        'right'
             // 'bottom-left' 'bottom' 'bottom-right'
           direction: null,
-          color: null, // 'error', 'info'(default),'warning', 'success'
+          color: null, // 'error', 'info'(default), 'warning', 'success'
           size: null, // 'small', 'medium', 'large'
           always: false,
           rounded: false,
