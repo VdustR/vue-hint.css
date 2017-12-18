@@ -51,7 +51,7 @@ With Modifiers:
 
 Modifiers First:
 
-> With modifiers `.static`, modifiers will have higher priority than options.
+> With modifier `.static`, modifiers will have higher priority than options.
 
 ```html
 <button v-hint-css.right.warning.small.bounce.always.rounded.static="options">

@@ -1,7 +1,7 @@
 {
   "name": "vp-vue-hint.css",
   "description": "Vue directive for hint.css",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "VdustR <VdustR@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/VdustR/vue-hint.css",
