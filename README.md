@@ -41,6 +41,22 @@ Check codepen [example](https://codepen.io/VdustR/pen/RxPOyG).
 <button v-hint-css="'hover me!!!'">
 ```
 
+### Modifiers
+
+With Modifiers:
+
+```html
+<button v-hint-css.right.warning.small.bounce.always.rounded="options">
+```
+
+Modifiers First:
+
+> With modifiers `.static`, modifiers will have higher priority than options.
+
+```html
+<button v-hint-css.right.warning.small.bounce.always.rounded.static="options">
+```
+
 ### Advanced
 
 ```html
