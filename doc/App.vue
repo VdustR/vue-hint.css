@@ -36,21 +36,32 @@
           option(value="medium") medium
           option(value="large") large
       label.field
-        input(type="checkbox" v-model="always")
-        .checkbox-label always
+        .label Always
+        select(v-model="alwaysSerialized")
+          option(value="null") default (false)
+          option(value="false") false
+          option(value="true") true
       label.field
-        input(type="checkbox" v-model="rounded")
-        .checkbox-label rounded
+        .label Rounded
+        select(v-model="roundedSerialized")
+          option(value="null") default (false)
+          option(value="false") false
+          option(value="true") true
       label.field
         .label Animate
         select(v-model="effect")
           option(value="") default
           option(value="no-animate") no-animate
           option(value="bounce") bounce
-    h2 Result
+    h3 Modifiers
+    .result
+      button(v-hint-css.right.warning.small.bounce.always.rounded="value") {{text}}
+    .result
+      button(v-hint-css.right.warning.small.bounce.always.rounded.static="value") {{text}}
+    h3 Reactive
     .result
       button(v-hint-css="value") {{text}}
-    h2 v-hint-css
+    h3 v-hint-css
     pre.code
       code {{JSON.stringify(this.value)}}
 </template>
@@ -64,14 +75,20 @@ export default {
       direction: '',
       color: '',
       size: '',
-      always: false,
-      rounded: false,
+      alwaysSerialized: 'null',
+      roundedSerialized: 'null',
       effect: '',
       passText: false
     }
   },
 
   computed: {
+    always () {
+      return eval(this.alwaysSerialized)
+    },
+    rounded () {
+      return eval(this.roundedSerialized)
+    },
     options () {
       let options = {
         text: this.text
@@ -85,11 +102,11 @@ export default {
       if (this.size) {
         options.size = this.size
       }
-      if (this.always) {
-        options.always = true
+      if (this.always !== null) {
+        options.always = this.always
       }
-      if (this.rounded) {
-        options.rounded = true
+      if (this.rounded !== null) {
+        options.rounded = this.rounded
       }
       if (this.effect) {
         options.effect = this.effect
