@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 let defaultDirective = 'hint-css'
 let defaultPrefixClass = 'hint--'
 let defaultAttr = 'aria-label'
@@ -43,11 +45,34 @@ const defaultEffect = null
 
 let hintCss = {}
 
+let defaultOptions = new Vue({
+  name: 'hintCssDefaultOptions',
+  data () {
+    return {
+      text: defaultText,
+      direction: defaultDirection,
+      color: defaultColor,
+      size: defaultSize,
+      always: defaultAlways,
+      rounded: defaultRounded,
+      effect: defaultEffect
+    }
+  }
+})
+
 hintCss.install = function (Vue, options) {
   let directive = options ? options.directive || defaultDirective : defaultDirective
   let prefixClass = options ? options.prefixClass || defaultPrefixClass : defaultPrefixClass
   let attr = options ? options.attr || defaultAttr : defaultAttr
   let staticModifier = options ? options.staticModifier || defaultStaticModifier : defaultStaticModifier
+  defaultOptions.text = options ? options.defaultText || defaultText : defaultText
+  defaultOptions.direction = options ? options.defaultDirection || defaultDirection : defaultDirection
+  defaultOptions.color = options ? options.defaultColor || defaultColor : defaultColor
+  defaultOptions.size = options ? options.defaultSize || defaultSize : defaultSize
+  defaultOptions.always = options ? options.defaultAlways || defaultAlways : defaultAlways
+  defaultOptions.rounded = options ? options.defaultRounded || defaultRounded : defaultRounded
+  defaultOptions.effect = options ? options.defaultEffect || defaultEffect : defaultEffect
+
   let map = new WeakMap()
 
   const getVue = el => {
@@ -63,7 +88,7 @@ hintCss.install = function (Vue, options) {
           text () {
             let str = String(this.value.text)
             if (str === '') return str
-            if (!this.value.text) return defaultText
+            if (!this.value.text) return defaultOptions.text
             return str
           },
           hasText () {
@@ -84,9 +109,9 @@ hintCss.install = function (Vue, options) {
           },
           direction () {
             if (this.static) {
-              return this.directionFromModifier || this.directionFromValue || defaultDirection
+              return this.directionFromModifier || this.directionFromValue || defaultOptions.direction
             }
-            return this.directionFromValue || this.directionFromModifier || defaultDirection
+            return this.directionFromValue || this.directionFromModifier || defaultOptions.direction
           },
           colorFromModifier () {
             let effectiveColors = colors.filter(color => this.modifiers.includes(color))
@@ -101,9 +126,9 @@ hintCss.install = function (Vue, options) {
           },
           color () {
             if (this.static) {
-              return this.colorFromModifier || this.colorFromValue || defaultColor
+              return this.colorFromModifier || this.colorFromValue || defaultOptions.color
             }
-            return this.colorFromValue || this.colorFromModifier || defaultColor
+            return this.colorFromValue || this.colorFromModifier || defaultOptions.color
           },
           sizeFromModifier () {
             let effectiveSizes = sizes.filter(size => this.modifiers.includes(size))
@@ -118,9 +143,9 @@ hintCss.install = function (Vue, options) {
           },
           size () {
             if (this.static) {
-              return this.sizeFromModifier || this.sizeFromValue || defaultSize
+              return this.sizeFromModifier || this.sizeFromValue || defaultOptions.size
             }
-            return this.sizeFromValue || this.sizeFromModifier || defaultSize
+            return this.sizeFromValue || this.sizeFromModifier || defaultOptions.size
           },
           alwaysFromModifier () {
             return this.modifiers.includes('always') ? true : null
@@ -136,7 +161,7 @@ hintCss.install = function (Vue, options) {
               if (this.alwaysFromValue !== null) return this.alwaysFromValue
               if (this.alwaysFromModifier !== null) return this.alwaysFromModifier
             }
-            return defaultAlways
+            return defaultOptions.always
           },
           roundedFromModifier () {
             return this.modifiers.includes('rounded') ? true : null
@@ -152,7 +177,7 @@ hintCss.install = function (Vue, options) {
               if (this.roundedFromValue !== null) return this.roundedFromValue
               if (this.roundedFromModifier !== null) return this.roundedFromModifier
             }
-            return defaultRounded
+            return defaultOptions.rounded
           },
           effectFromModifier () {
             let effectiveEffects = effects.filter(effect => this.modifiers.includes(effect))
@@ -167,9 +192,9 @@ hintCss.install = function (Vue, options) {
           },
           effect () {
             if (this.static) {
-              return this.effectFromModifier || this.effectFromValue || defaultEffect
+              return this.effectFromModifier || this.effectFromValue || defaultOptions.effect
             }
-            return this.effectFromValue || this.effectFromModifier || defaultEffect
+            return this.effectFromValue || this.effectFromModifier || defaultOptions.effect
           },
           static () {
             return this.modifiers.includes(staticModifier)
@@ -250,3 +275,6 @@ hintCss.install = function (Vue, options) {
 }
 
 export default hintCss
+export {
+  defaultOptions
+}

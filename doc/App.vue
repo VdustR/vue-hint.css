@@ -50,7 +50,7 @@
           option(value="false") false
           option(value="true") true
       label.field
-        .label Animate
+        .label Effect
         select(v-model="effect")
           option(value="") default
           option(value="no-animate") no-animate

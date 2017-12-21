@@ -95,3 +95,32 @@ Vue.use(vueHintCss, {
   attr: 'aria-label' // or 'data-hint'
 })
 ```
+
+### Default values
+
+```javascript
+Vue.use(vueHintCss, {
+  defaultText: 'Default Text',
+  defaultDirection: 'bottom',
+  defaultColor: 'warning',
+  defaultSize: 'large',
+  defaultAlways: true,
+  defaultRounded: true,
+  defaultEffect: 'bounce'
+})
+```
+
+Default values are reactive:
+
+```javascript
+import vueHintCss, {defaultOptions} from 'vp-vue-hint.css'
+
+Vue.use(vueHintCss)
+defaultOptions.text: 'Default Text',
+defaultOptions.direction: 'bottom',
+defaultOptions.color: 'warning',
+defaultOptions.size: 'large',
+defaultOptions.always: true,
+defaultOptions.rounded: true,
+defaultOptions.effect: 'bounce'
+```
