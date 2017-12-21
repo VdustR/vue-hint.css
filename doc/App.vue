@@ -56,8 +56,10 @@
           option(value="no-animate") no-animate
           option(value="bounce") bounce
     h3 Modifiers
+    h4 Options First
     .result
       button(v-hint-css.right.warning.small.bounce.always.rounded="value") {{text}}
+    h4 Modifiers First
     .result
       button(v-hint-css.right.warning.small.bounce.always.rounded.static="value") {{text}}
     h3 Reactive
@@ -69,8 +71,7 @@
 </template>
 
 <script>
-export default {
-  name: 'app',
+const options = {
   data () {
     return {
       sentText: true,
@@ -129,6 +130,11 @@ export default {
       return this.options
     }
   }
+}
+
+export default {
+  name: 'app',
+  ...options
 }
 </script>
 
