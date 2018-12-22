@@ -1,3 +1,5 @@
+**DEPRECATED**: [`v-tooltip`](https://akryum.github.io/v-tooltip) is recommended.
+
 # vue-hint.css
 
 > Vue directive for [hint.css](https://github.com/chinchang/hint.css)
